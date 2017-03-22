@@ -21,7 +21,7 @@ defmodule ExAdmin.Theme.AdminLte2.Filter do
               input type: :hidden, name: :scope, value: scope
             end
             for field <- fields(defn), do: build_field(field, q, defn)
-            for field <- associations(defn), do: build_field(field, q, defn)
+            # for field <- associations(defn), do: build_field(field, q, defn)
           end
           div ".box-footer" do
             input name: "commit", type: "submit", value: (gettext "Filter"), class: "btn btn-primary"
@@ -91,7 +91,7 @@ defmodule ExAdmin.Theme.AdminLte2.Filter do
   end
 
   def build_field({name, num}, q, defn) when num in [:integer, :id, :decimal] do
-    unless check_and_build_association(name, q, defn) do
+    # unless check_and_build_association(name, q, defn) do
       selected_name = integer_selected_name(name, q)
       value = get_integer_value name, q
       name_label = field_label(name, defn)
@@ -115,7 +115,7 @@ defmodule ExAdmin.Theme.AdminLte2.Filter do
           end
         end
       end
-    end
+    # end
   end
 
   def build_field({name, %Ecto.Association.BelongsTo{related: assoc, owner_key: owner_key}}, q, defn) do
