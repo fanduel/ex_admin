@@ -161,8 +161,6 @@ defmodule ExAdmin do
   import ExAdmin.Utils, only: [titleize: 1, humanize: 1, admin_resource_path: 2]
   require ExAdmin.Register
 
-  Code.ensure_compiled(ExAdmin.Register)
-
   Module.register_attribute(__MODULE__, :registered, accumulate: true, persist: true)
 
   @default_theme ExAdmin.Theme.AdminLte2

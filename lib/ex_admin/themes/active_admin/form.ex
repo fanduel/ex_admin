@@ -376,7 +376,7 @@ defmodule ExAdmin.Theme.ActiveAdmin.Form do
         for {field, type} <- schema do
           error =
             if errors,
-              do: Enum.filter_map(errors, &(elem(&1, 0) == to_string(field)), &elem(&1, 1)),
+              do: Enum.filter(errors, &(elem(&1, 0) == to_string(field))) |> Enum.map(&elem(&1, 1)),
               else: nil
 
           ExAdmin.Form.build_input(conn, type, field, field_name, res, model_name, error, inx)

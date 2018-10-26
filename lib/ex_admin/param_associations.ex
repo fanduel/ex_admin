@@ -55,11 +55,13 @@ defmodule ExAdmin.ParamsAssociations do
 
   def build_for_checkboxes(params) do
     # convert to array of id's
-    Enum.filter_map(
-      params,
+    params
+    |> Enum.filter(
       fn x ->
         elem(x, 1) == "on"
-      end,
+      end
+    )
+    |> Enum.map(
       fn x ->
         Atom.to_string(elem(x, 0))
       end

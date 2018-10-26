@@ -1,5 +1,3 @@
-Code.ensure_compiled(ExAdmin.Utils)
-
 defmodule ExAdmin.Helpers do
   @moduledoc false
   require Logger

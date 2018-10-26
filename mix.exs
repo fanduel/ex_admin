@@ -29,29 +29,6 @@ defmodule ExAdmin.Mixfile do
     ]
   end
 
-  def application do
-    [applications: applications(Mix.env())]
-  end
-
-  defp applications(:test) do
-    [:plug, :cowboy | applications(:prod)]
-  end
-
-  defp applications(_) do
-    [
-      :gettext,
-      :phoenix,
-      :ecto,
-      :inflex,
-      :scrivener,
-      :scrivener_ecto,
-      :csvlixir,
-      :logger,
-      :ex_queb,
-      :xain
-    ]
-  end
-
   defp elixirc_paths(:test), do: ["lib", "web", "test/support"]
   defp elixirc_paths(_), do: ["lib", "web"]
 
@@ -60,13 +37,13 @@ defmodule ExAdmin.Mixfile do
       {:decimal, "~> 1.0"},
       {:phoenix, "~> 1.2"},
       {:phoenix_html, "~> 2.6"},
-      {:ecto, "~> 2.1"},
+      {:ecto, "~> 3.0-rc", override: true},
       {:phoenix_ecto, "~> 3.2"},
-      {:postgrex, "~> 0.13", only: :test},
+      {:postgrex, "~> 0.14-rc", only: :test},
       {:floki, "~> 0.8", only: :test},
-      {:cowboy, "~> 1.0"},
+      {:plug_cowboy, "~> 1.0", only: :test},
       {:inflex, "~> 1.7"},
-      {:scrivener_ecto, "~> 1.1"},
+      {:scrivener_ecto, github: "fanduel/scrivener_ecto"},
       {:xain, "~> 0.6"},
       {:csvlixir, "~> 1.0.0"},
       {:exactor, "~> 2.2.0"},

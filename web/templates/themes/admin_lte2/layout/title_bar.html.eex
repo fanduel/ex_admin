@@ -6,9 +6,9 @@
         <%= for {link, name} <- crumbs do %>
           <li> 
             <%= case name do %>
-            <%=   "admin" -> %>
+            <% "admin" -> %>
               <a href="<%= link %>"><i class="fa fa-dashboard"></i><%= name %></a>
-            <%=  _ -> %>
+            <%  _ -> %>
               <a href="<%= link %>"><%= truncate name , length: 15 %></a>
             <% end %>
           </li>  

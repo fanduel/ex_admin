@@ -59,7 +59,7 @@ defmodule ExAdmin.ResourceController do
       defp restricted_action?(:update, defn), do: restricted_action?(:edit, defn)
       defp restricted_action?(action, defn) do
         if action in [:show, :edit, :update, :new, :destroy, :delete] do
-          not action in defn.actions
+          action not in defn.actions
         else
           false
         end
@@ -139,7 +139,7 @@ defmodule ExAdmin.ResourceController do
           opts[:only] ->
             if action in opts[:only], do: true, else: false
           opts[:except] ->
-            if not action in opts[:except], do: true, else: false
+            if action not in opts[:except], do: true, else: false
           true -> true
         end
         if filter do
@@ -160,7 +160,7 @@ defmodule ExAdmin.ResourceController do
           opts[:only] ->
             if action in opts[:only], do: true, else: false
           opts[:except] ->
-            if not action in opts[:except], do: true, else: false
+            if action not in opts[:except], do: true, else: false
           true -> true
         end
         if filter do

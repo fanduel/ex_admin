@@ -1,5 +1,3 @@
-Code.ensure_compiled(ExAdmin.Utils)
-
 defmodule ExAdmin.Table do
   @moduledoc false
   require Integer
@@ -257,12 +255,6 @@ defmodule ExAdmin.Table do
     end
   end
 
-  def handle_contents(%Ecto.DateTime{} = dt, field_name) do
-    td class: to_class("td-", field_name) do
-      text(to_string(dt))
-    end
-  end
-
   def handle_contents(%DateTime{} = dt, field_name) do
     td class: to_class("td-", field_name) do
       text(to_string(dt))
@@ -270,18 +262,6 @@ defmodule ExAdmin.Table do
   end
 
   def handle_contents(%NaiveDateTime{} = dt, field_name) do
-    td class: to_class("td-", field_name) do
-      text(to_string(dt))
-    end
-  end
-
-  def handle_contents(%Ecto.Time{} = dt, field_name) do
-    td class: to_class("td-", field_name) do
-      text(to_string(dt))
-    end
-  end
-
-  def handle_contents(%Ecto.Date{} = dt, field_name) do
     td class: to_class("td-", field_name) do
       text(to_string(dt))
     end

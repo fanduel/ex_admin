@@ -1,5 +1,3 @@
-Code.ensure_compiled(ExAdmin.Utils)
-
 defmodule ExAdmin.Theme.ActiveAdmin.Filter do
   @moduledoc false
   require Logger
