@@ -283,7 +283,7 @@ defmodule ExAdmin.Table do
 
   def handle_contents(contents, field_name) when is_binary(contents) do
     td to_class(".td-", field_name) do
-      text(contents)
+      Phoenix.HTML.raw(contents)
     end
   end
 

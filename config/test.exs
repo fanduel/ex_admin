@@ -8,7 +8,6 @@ config :ex_admin, TestExAdmin.Endpoint,
 # debug_errors: true
 
 config :ex_admin, TestExAdmin.Repo,
-  adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "postgres",
   database: "ex_admin_test",
@@ -17,6 +16,7 @@ config :ex_admin, TestExAdmin.Repo,
 
 config :ex_admin,
   repo: TestExAdmin.Repo,
+  ecto_repos: [TestExAdmin.Repo],
   module: TestExAdmin,
   modules: [
     TestExAdmin.ExAdmin.Dashboard,

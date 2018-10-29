@@ -202,7 +202,7 @@ defmodule ExAdmin.Helpers do
   def build_single_field(resource, conn, f_name, %{fun: fun} = opts) do
     markup :nested do
       case fun.(resource) do
-        [{_, list}] -> list
+        [{val, list}] when val != :safe -> list
         other -> other
       end
     end

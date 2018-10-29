@@ -77,28 +77,31 @@ defmodule ExAdmin.Theme.AdminLte2.Index do
     page = opts[:page]
 
     div ".paginated_collection" do
-      div ".paginated_collection_contents" do
-        div ".index_content" do
-          div ".container-fluid" do
-            col_width = Kernel.div(12, columns)
+      [
+        div ".paginated_collection_contents" do
+          div ".index_content" do
+            div ".container-fluid" do
+              col_width = Kernel.div(12, columns)
 
-            Enum.chunk_every(page.entries, columns, columns, [nil])
-            |> Enum.map(fn list ->
-              div ".row" do
-                Enum.map(list, fn item ->
-                  div ".col-md-#{col_width}.col-sm-#{col_width * 2}.col-xs-12" do
-                    if item do
-                      opts[:cell].(item)
+              Enum.chunk_every(page.entries, columns, columns, [nil])
+              |> Enum.map(fn list ->
+                div ".row" do
+                  Enum.map(list, fn item ->
+                    div ".col-md-#{col_width}.col-sm-#{col_width * 2}.col-xs-12" do
+                      if item do
+                        opts[:cell].(item)
+                      end
                     end
-                  end
-                end)
-              end
-            end)
+                  end)
+                end
+              end)
+            end
           end
-        end
 
-        # .index_content
-      end <> do_footer(conn, opts)
+          # .index_content
+        end,
+        do_footer(conn, opts)
+      ]
     end
   end
 

@@ -360,10 +360,13 @@ defmodule ExAdmin.Index do
       else
         columns ++
           [
-            {"Actions", %{
-              fun: fn resource -> build_index_links(conn, resource, actions, page.page_number) end,
-              label: ExAdmin.Gettext.gettext("Actions")
-            }}
+            {"Actions",
+             %{
+               fun: fn resource ->
+                 build_index_links(conn, resource, actions, page.page_number)
+               end,
+               label: ExAdmin.Gettext.gettext("Actions")
+             }}
           ]
       end
 
@@ -455,7 +458,12 @@ defmodule ExAdmin.Index do
     list = get_authorized_links(conn, links, resource_model) |> Enum.reverse()
     labels = conn.assigns.defn.action_labels
 
-    Module.concat(conn.assigns.theme, Index).handle_action_links(list, resource, labels, page_num)
+    Module.concat(conn.assigns.theme, Index).handle_action_links(
+      list,
+      resource,
+      labels,
+      page_num
+    )
   end
 
   @doc false
