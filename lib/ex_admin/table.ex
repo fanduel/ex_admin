@@ -109,7 +109,7 @@ defmodule ExAdmin.Table do
   end
 
   def do_panel(conn, columns \\ [], table_opts \\ [], output \\ [])
-  def do_panel(_conn, [], _table_opts, output), do: Enum.join(Enum.reverse(output))
+  def do_panel(_conn, [], _table_opts, output), do: raw(Enum.join(Enum.map(Enum.reverse(output), &Phoenix.HTML.safe_to_string/1)))
 
   def do_panel(
         conn,
